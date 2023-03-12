@@ -34,7 +34,7 @@ pipeline {
     stages {
         stage ('code checkout'){
             steps {
-               git branch: 'main', credentialsId: 'gitcred', url: 'https://github.com/fridadavid/cicd-kubernetes.git'
+               
             }
         }
         stage('Build') {
