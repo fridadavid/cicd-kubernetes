@@ -4,10 +4,9 @@ pipeline{
     }
     stages{
         stage('deploy to eks cluster'){
-            steps {
+            steps {}
             sh "aws eks --region us-east-1 update-kubeconfig --name testcluster"
             sh "helm upgrade --install --force mydav helm/davcharts --set mydavimage=${registry}:${BUILD_NUMBER}" --namespace ayuk
-            }
         }
     }
 }
