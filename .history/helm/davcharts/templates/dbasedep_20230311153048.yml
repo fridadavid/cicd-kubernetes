@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: davdb
+  labels:
+    app: davdb
+spec:
+  selector:
+    matchLabels:
+      app: davdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: davdb
+    spec:
+      containers:
+      - name: davdb
+        image: imranvisualpath/8pmdbimg:v1
+        ports:
+        - name: davdb-port
+          containerPort: 3306
+        env: 
+         - name: MYSQL_ROOT_PASSWORD
+           valueFrom:
+             secretKeyRef:
+               name: app-secret
+               key: db-pass
+  #      env:
+#         - name: MYSQL_ROOT_PASSWORD
+#           value: "vprodbpass"

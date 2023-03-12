@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: davapp-service
+spec:
+  ports:
+  - port: 80
+    targetPort: davapp-port
+    protocol: TCP
+  selector:
+    app: davapp
+  type: LoadBalancer  # can be change to clusterip when using nginx ingress
