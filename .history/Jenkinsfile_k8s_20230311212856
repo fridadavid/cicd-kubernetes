@@ -1,0 +1,11 @@
+pipeline{
+    agent{
+        label 'k8s-slave'
+    }
+    stages{
+        stage('deploy to eks cluster'){
+            sh 
+            sh "helm upgrade --install --force mydav helm/davcharts --set mydavimage=${registry}:${BUILD_NUMBER}" --namespace ayuk
+        }
+    }
+}

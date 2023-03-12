@@ -1,0 +1,8 @@
+pipeline{
+    agent{
+        label 'k8s-slave'
+    }
+    stages{
+        
+    }
+}

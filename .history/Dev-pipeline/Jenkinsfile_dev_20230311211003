@@ -125,7 +125,7 @@ stage('unit test') {
         }
         stage('remove old docker image'){
             steps{
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi "
             }
         }
     }  
