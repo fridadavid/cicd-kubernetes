@@ -80,7 +80,7 @@ stage('unit test') {
         }
         stage('qgate'){
             steps {
-                timeout(time: 3, unit: 'MINUTES') {
+                timeout(time: , unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
