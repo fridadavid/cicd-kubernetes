@@ -109,7 +109,7 @@ stage('unit test') {
         stage('Building application image'){
             steps {
                 script{
-                    dockerImage = docker.build(registry + ":$BUILD_NUMBER", "./Docker/application/dev/")
+                    dockerImage = docker.build(registry + "v:$BUILD_NUMBER", "./Docker/application/dev/")
                 }
             }
         }
