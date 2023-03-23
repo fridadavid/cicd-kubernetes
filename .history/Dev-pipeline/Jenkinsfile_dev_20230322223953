@@ -64,7 +64,7 @@ stage('unit test') {
                 sh  'mvn -s settings.xml checkstyle:checkstyle'
             }
         }
-        /*
+        /
         stage('code analysis with sonarqube') {
           environment {
              scannerHome = tool "${sonarscanner}"
@@ -92,7 +92,6 @@ stage('unit test') {
                 }
             }
         }
-        */
         stage('Beagle Security login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'bseclogin', usernameVariable: 'BEAGLE_USERNAME', passwordVariable: 'BEAGLE_PASSWORD')]) {
