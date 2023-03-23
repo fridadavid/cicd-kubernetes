@@ -29,7 +29,7 @@ pipeline {
         REPOSITORY_TYPE = "git"
         REPOSITORY_URL = "https://github.com/fridadavid/cicd-kubernetes.git"
         PROJECT_ID = ""
-        BEAGLE_AUTH_TOKEN = "wty1wnmnmh8kwi509m9py5j8o56kquhq"
+         BEAGLE_AUTH_TOKEN = "wty1wnmnmh8kwi509m9py5j8o56kquhq"
 
         
 
@@ -105,7 +105,6 @@ stage('unit test') {
                  sh 'SCAN_STATUS="in_progress"; while [ $SCAN_STATUS != "completed" ]; do SCAN_STATUS=$(curl -H "Content-Type:application/json" -H "X-AUTH-TOKEN:$BEAGLE_AUTH_TOKEN" -X GET "https://beaglesecurity.com/api/v1/scan/status?project_id=<PROJECT_ID>" | jq -r ".status"); sleep 30; done'
             }
         }
-        /*
     stage('upload artifacts to nexus'){
             steps {
                  nexusArtifactUploader(
@@ -149,7 +148,7 @@ stage('unit test') {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
-        */
+        
     }  
     post {
         always {
