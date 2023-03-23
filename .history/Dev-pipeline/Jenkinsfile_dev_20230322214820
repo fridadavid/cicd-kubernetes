@@ -98,7 +98,7 @@ stage('unit test') {
                 }
             }
         }
-        /*
+        /
         stage('scan project'){
             steps{
                  sh 'curl -H "Content-Type:application/json" -H "X-AUTH-TOKEN:$BEAGLE_AUTH_TOKEN" -X POST "https://beaglesecurity.com/api/v1/project" -d \'{"project_name":"$PROJECT_NAME", "repository_type":"$REPOSITORY_TYPE", "repository_url":"$REPOSITORY_URL"}\''
@@ -148,7 +148,6 @@ stage('unit test') {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
-        */
     }  
     post {
         always {
