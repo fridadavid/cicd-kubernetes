@@ -94,14 +94,12 @@ stage('unit test') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'bseclogin', usernameVariable: 'BEAGLE_USERNAME', passwordVariable: 'BEAGLE_PASSWORD')]) {
                     sh 'curl -u $BEAGLE_USERNAME:$BEAGLE_PASSWORD -X POST "https://beaglesecurity.com/api/v1/auth/login"'
+                    sh 'curl -H "Content-Type:application/json" -H "X-AUTH-TOKEN:$BEAGLE_AUTH_TOKEN" -X POST "https://beaglesecurity.com/api/v1/project" -d \'{"project_name":"$PROJECT_NAME", "repository_type":"$REPOSITORY_TYPE", "repository_url":"$REPOSITORY_URL"}\''
+
+
+
                     
                 }
-            }
-        }
-        stage('scan project'){
-            steps{
-                 sh 'curl -H "Content-Type:application/json" -H "X-AUTH-TOKEN:$BEAGLE_AUTH_TOKEN" -X POST "https://beaglesecurity.com/api/v1/project" -d \'{"project_name":"$PROJECT_NAME", "repository_type":"$REPOSITORY_TYPE", "repository_url":"$REPOSITORY_URL"}\''
-                 sh 'SCAN_STATUS="in_progress"; while [ $SCAN_STATUS != "completed" ]; do SCAN_STATUS=$(curl -H "Content-Type:application/json" -H "X-AUTH-TOKEN:$BEAGLE_AUTH_TOKEN" -X GET "https://beaglesecurity.com/api/v1/scan/status?project_id=<PROJECT_ID>" | jq -r ".status"); sleep 30; done'
             }
         }
     stage('upload artifacts to nexus'){
