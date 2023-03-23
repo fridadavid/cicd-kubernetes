@@ -107,7 +107,7 @@ stage('unit test') {
                  sh 'curl -H "Content-Type:application/json" -H "X-AUTH-TOKEN:$BEAGLE_AUTH_TOKEN" -X GET "https://beaglesecurity.com/api/v1/scan/report?project_id=<PROJECT_ID>" > beagle_report.json'
             }
         }
-    */
+        /*
     stage('upload artifacts to nexus'){
             steps {
                  nexusArtifactUploader(
@@ -151,7 +151,7 @@ stage('unit test') {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
-        
+        */
     }  
     post {
         always {
